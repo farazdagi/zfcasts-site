@@ -1,0 +1,6 @@
+permalink: .htaccess
+skip: false
+---
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^zfcasts\.ru$
+RewriteRule (.*) http://www.zfcasts.ru/$1 [R=301,L]
