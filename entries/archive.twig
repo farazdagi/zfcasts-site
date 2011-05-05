@@ -1,3 +1,29 @@
 permalink: /archive/
+providers:
+    episodes:
+        provider: Episodes
+        season: 1
 ---
-TBA
+
+<h1 id="main">Архив выпусков:</h1>
+
+{% for episode in this.providers.episodes %}
+<div class="episode">
+    <h1> {{ episode.title }}</h1>
+    <div class="legend">{{ episode.legend }}</div>
+    <div class="notes-toggle"><a href="javascript://">Show Notes</a></div>
+    <div class="notes">
+        {{ episode.notes }}
+    </div>
+    <div class="player">
+        <p id="player-{{ episode.playerid }}">{{ episode.title }}</p>  
+        <script type="text/javascript">  
+            AudioPlayer.embed("player-{{ episode.playerid }}", {
+                soundFile: "{{ episode.file }}",
+                titles: "{{ episode.title }}",  
+                artists: "{{ episode.authors }}",
+            });  
+        </script>  
+    </div>
+</div>
+{% endfor %}

@@ -1,18 +1,33 @@
-permalink: /draft/
-episodes:
-    - 
-        title: zftalk.dev s1e0
-        url: http://zf.rpod.ru/174118.html
-    - 
-        title: SOme s
-        url: uri
+permalink: /
+providers:
+    episodes:
+        provider: Episodes
+        season: 2
 ---
+
+<div>
+    Вопросы, пожелания, яд слать <a href="http://twitter.com/#/zftalk" target="_blank">@zftalk</a>
+</div>
 
 <h1 id="main">Список выпусков:</h1>
 
-{% for episode in this.episodes %}
-<div>
-    s
-{{ episode.title }}
+{% for episode in this.providers.episodes %}
+<div class="episode">
+    <h1 id="{{episode.id}}"> {{ episode.title }}</h1>
+    <div class="legend">{{ episode.legend }}</div>
+    <div class="notes-toggle"><a href="javascript://">Show Notes</a></div>
+    <div class="notes">
+        {{ episode.notes }}
+    </div>
+    <div class="player">
+        <p id="player-{{ episode.playerid }}">{{ episode.title }}</p>  
+        <script type="text/javascript">  
+            AudioPlayer.embed("player-{{ episode.playerid }}", {
+                soundFile: "{{ episode.file }}",
+                titles: "{{ episode.title }}",  
+                artists: "{{ episode.authors }}",
+            });  
+        </script>  
+    </div>
 </div>
 {% endfor %}
