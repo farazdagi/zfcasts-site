@@ -15,7 +15,11 @@ providers:
 <div class="episode">
     <h1 id="{{episode.id}}"> {{ episode.title }}</h1>
     <div class="legend">{{ episode.legend }}</div>
-    <div class="notes-toggle"><a href="javascript://">Show Notes</a></div>
+    <div class="left notes-toggle" style="padding-right:15px;">
+        <div><a href="javascript://">Show Notes</a></div>
+    </div>
+    <div class="left"><a href="{{ episode.file }}">Скачать</a></div>
+    <div class="clear"></div>
     <div class="notes">
         {{ episode.notes }}
     </div>
